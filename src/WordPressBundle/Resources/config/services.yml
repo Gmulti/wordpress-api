@@ -13,3 +13,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { termId: 'exact', name: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'term.search' } ]
+
+    option.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { optionId: 'exact', optionName: 'exact', optionValue: 'partial'} ]
+        tags:      [ { name: 'api_platform.filter', id: 'option.search' } ]
