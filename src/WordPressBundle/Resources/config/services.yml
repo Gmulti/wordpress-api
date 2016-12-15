@@ -1,23 +1,15 @@
 services:
     post.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: 
-            - id: 'exact' 
-            - postType: 'exact'
+        arguments: [ { id: 'exact' , postType: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'post.search' } ]
 
     postmeta.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: 
-            - metaId: 'exact'
-            - postId: 'exact'
-            - metaKey: 'exact'
-            - metaValue: 'exact'
+        arguments: [ { metaId: 'exact', postId: 'exact', metaKey: 'exact', metaValue: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'postmeta.search' } ]
 
     term.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: 
-            - termId: 'exact'
-            - name: 'exact'
+        arguments: [ { termId: 'exact', name: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'term.search' } ]
