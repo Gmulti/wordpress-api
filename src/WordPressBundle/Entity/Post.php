@@ -11,8 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(attributes={
         "filters"={
             "post.search"
-        },
-        "pagination_items_per_page"=1000
+        }
     }
 )
  * @ORM\Entity
