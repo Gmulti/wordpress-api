@@ -16,7 +16,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 - [ ] Postmeta
 - [ ] Option
 - [ ] Link
-- [ ] Term
+- [X] Term
 - [ ] Term Relationships
 - [ ] Termmeta
 - [ ] Term Taxonomy
