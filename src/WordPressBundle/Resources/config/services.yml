@@ -1,0 +1,14 @@
+services:
+    post.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: 
+            - id: 'exact' 
+            - postType: 'exact'
+        tags:      [ { name: 'api_platform.filter', id: 'post.search' } ]
+
+    term.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: 
+            - termId: 'exact'
+            - name: 'exact'
+        tags:      [ { name: 'api_platform.filter', id: 'post.search' } ]
