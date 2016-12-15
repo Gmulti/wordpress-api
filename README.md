@@ -16,7 +16,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 ### Entities
 - [x] Post
 - [x] Postmeta
-- [ ] Option
+- [x] Option
 - [ ] Link
 - [X] Term
 - [ ] Term Relationships
