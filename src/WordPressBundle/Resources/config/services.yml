@@ -20,4 +20,4 @@ services:
         arguments: 
             - termId: 'exact'
             - name: 'exact'
-        tags:      [ { name: 'api_platform.filter', id: 'post.search' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'term.search' } ]
