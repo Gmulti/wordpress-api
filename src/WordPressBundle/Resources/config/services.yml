@@ -34,6 +34,11 @@ services:
         arguments: [ { metaId: 'exact', metaKey: 'exact', commentId: 'exact'} ]
         tags:      [ { name: 'api_platform.filter', id: 'commentmeta.search' } ]
 
+    termmeta.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { metaId: 'exact', metaKey: 'exact', termId: 'exact'} ]
+        tags:      [ { name: 'api_platform.filter', id: 'termmeta.search' } ]
+
     term_relationship.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { objectId: 'exact', termTaxonomyId: 'exact' } ]
