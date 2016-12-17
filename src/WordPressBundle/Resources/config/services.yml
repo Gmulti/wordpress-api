@@ -48,3 +48,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { termTaxonomyId: 'exact', termId: 'exact', taxonomy: 'exact', parent: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'term_taxonomy.search' } ]
+    
+    usermeta.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { umetaId: 'exact', metaKey: 'exact', termId: 'exact'} ]
+        tags:      [ { name: 'api_platform.filter', id: 'usermeta.search' } ]
