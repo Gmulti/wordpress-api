@@ -1,14 +1,18 @@
 {
-    "name": "api-platform/api-platform",
+    "name": "Gmulti/wordpress-api",
     "license": "MIT",
     "type": "project",
-    "description": "The API Platform framework",
+    "description": "The API Platform framework for WordPress",
     "homepage": "https://api-platform.com",
     "authors": [
         {
             "name": "Kévin Dunglas",
             "email": "dunglas@gmail.com",
             "homepage": "https://dunglas.fr"
+        },
+        {
+            "name" : "Thomas DENEULIN",
+            "email" : "thomasdeneulin@gmail.com"
         }
     ],
     "autoload": {
@@ -33,7 +37,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "dunglas/action-bundle": "^0.3",
         "nelmio/cors-bundle": "^1.4",
-        "phpdocumentor/reflection-docblock": "^3.0"
+        "phpdocumentor/reflection-docblock": "^3.0",
+        "bshaffer/oauth2-server-bundle": "^0.3.0",
+        "gedmo/doctrine-extensions": "^2.4"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",
