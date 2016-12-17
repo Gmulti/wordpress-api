@@ -21,5 +21,5 @@ services:
     
     link.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: [ { linkId: 'exact', linkUrl: 'exact', linkName: 'partial'} ]
+        arguments: [ { linkId: 'exact', linkUrl: 'exact', linkName: 'exact'} ]
         tags:      [ { name: 'api_platform.filter', id: 'link.search' } ]
