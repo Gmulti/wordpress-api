@@ -17,15 +17,15 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 - [x] Post
 - [x] Postmeta
 - [x] Option
-- [ ] Link
-- [X] Term
-- [ ] Term Relationships
-- [ ] Termmeta
-- [ ] Term Taxonomy
-- [ ] User
-- [ ] Usermeta
-- [ ] Comment
-- [ ] Commentmeta
+- [x] Link
+- [x] Term
+- [x] Term Relationships
+- [x] Termmeta
+- [x] Term Taxonomy
+- [x] User
+- [x] Usermeta
+- [x] Comment
+- [x] Commentmeta
 
 ### Fixtures 
 
