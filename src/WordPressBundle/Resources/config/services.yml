@@ -38,3 +38,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { objectId: 'exact', termTaxonomyId: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'term_relationship.search' } ]
+
+    term_taxonomy.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { termTaxonomyId: 'exact', termId: 'exact', taxonomy: 'exact', parent: 'exact' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'term_taxonomy.search' } ]
