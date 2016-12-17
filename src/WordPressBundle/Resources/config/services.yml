@@ -53,3 +53,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { umetaId: 'exact', metaKey: 'exact', termId: 'exact'} ]
         tags:      [ { name: 'api_platform.filter', id: 'usermeta.search' } ]
+
+    user.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { id: 'exact', userLogin: 'exact', userEmail: 'exact'} ]
+        tags:      [ { name: 'api_platform.filter', id: 'user.search' } ]
