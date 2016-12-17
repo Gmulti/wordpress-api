@@ -28,3 +28,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { commentId: 'exact', commentAuthor: 'exact', userId: 'exact'} ]
         tags:      [ { name: 'api_platform.filter', id: 'comment.search' } ]
+
+    commentmeta.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { metaId: 'exact', metaKey: 'exact', commentId: 'exact'} ]
+        tags:      [ { name: 'api_platform.filter', id: 'commentmeta.search' } ]
