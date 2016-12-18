@@ -14,112 +14,119 @@ use Symfony\Component\Validator\Constraints as Assert;
         }
     }
 )
- * @ORM\Entity
- * @ORM\Table(name="wp_comments")
+ * @ORM\Entity()
+ * @ORM\Table(name="wp_comments", indexes={@ORM\Index(name="comment_post_ID", columns={"comment_post_ID"}), @ORM\Index(name="comment_approved_date_gmt", columns={"comment_approved", "comment_date_gmt"}), @ORM\Index(name="comment_date_gmt", columns={"comment_date_gmt"}), @ORM\Index(name="comment_parent", columns={"comment_parent"}), @ORM\Index(name="comment_author_email", columns={"comment_author_email"})})
  */
 class Comment
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="comment_ID")
+     * @var integer
+     *
+     * @ORM\Column(name="comment_post_ID", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $commentId;
+    protected $commentPostId = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="bigint", name="comment_post_ID")
-     */
-    protected $commentPostId;
-
-    /**
-     *
-     * @ORM\Column(type="text", name="comment_author")
+     * @ORM\Column(name="comment_author", type="text", length=255, nullable=false)
      */
     protected $commentAuthor;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_author_email")
+     * @ORM\Column(name="comment_author_email", type="string", length=100, nullable=false)
      */
-    protected $commentAuthorEmail;
+    protected $commentAuthorEmail = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_author_url")
+     * @ORM\Column(name="comment_author_url", type="string", length=200, nullable=false)
      */
-    protected $commentAuthorUrl;
+    protected $commentAuthorUrl = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_author_IP")
+     * @ORM\Column(name="comment_author_IP", type="string", length=100, nullable=false)
      */
-    protected $commentAuthorIP;
+    protected $commentAuthorIp = '';
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", name="comment_date")
+     * @ORM\Column(name="comment_date", type="datetime", nullable=false)
      */
-    protected $commentDate;
+    protected $commentDate = '0000-00-00 00:00:00';
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", name="comment_date_gmt")
+     * @ORM\Column(name="comment_date_gmt", type="datetime", nullable=false)
      */
-    protected $commentDateGmt;
+    protected $commentDateGmt = '0000-00-00 00:00:00';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="text", name="comment_content")
+     * @ORM\Column(name="comment_content", type="text", length=65535, nullable=false)
      */
     protected $commentContent;
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="integer", name="comment_karma")
+     * @ORM\Column(name="comment_karma", type="integer", nullable=false)
      */
-    protected $commentKarma;
+    protected $commentKarma = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_approved")
+     * @ORM\Column(name="comment_approved", type="string", length=20, nullable=false)
      */
-    protected $commentApproved;
+    protected $commentApproved = '1';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_agent")
+     * @ORM\Column(name="comment_agent", type="string", length=255, nullable=false)
      */
-    protected $commentAgent;
+    protected $commentAgent = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_type")
+     * @ORM\Column(name="comment_type", type="string", length=20, nullable=false)
      */
-    protected $commentType;
+    protected $commentType = '';
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="bigint", name="comment_parent")
+     * @ORM\Column(name="comment_parent", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $commentParent;
+    protected $commentParent = '0';
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="bigint", name="user_id")
+     * @ORM\Column(name="user_id", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $userId;
-
+    protected $userId = '0';
 
     /**
-     * Get commentId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="comment_ID", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getCommentId()
-    {
-        return $this->commentId;
-    }
+    protected $commentId;
+
+
 
     /**
      * Set commentPostId
@@ -218,27 +225,27 @@ class Comment
     }
 
     /**
-     * Set commentAuthorIP
+     * Set commentAuthorIp
      *
-     * @param string $commentAuthorIP
+     * @param string $commentAuthorIp
      *
      * @return Comment
      */
-    public function setCommentAuthorIP($commentAuthorIP)
+    public function setCommentAuthorIp($commentAuthorIp)
     {
-        $this->commentAuthorIP = $commentAuthorIP;
+        $this->commentAuthorIp = $commentAuthorIp;
 
         return $this;
     }
 
     /**
-     * Get commentAuthorIP
+     * Get commentAuthorIp
      *
      * @return string
      */
-    public function getCommentAuthorIP()
+    public function getCommentAuthorIp()
     {
-        return $this->commentAuthorIP;
+        return $this->commentAuthorIp;
     }
 
     /**
@@ -455,5 +462,15 @@ class Comment
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Get commentId
+     *
+     * @return integer
+     */
+    public function getCommentId()
+    {
+        return $this->commentId;
     }
 }

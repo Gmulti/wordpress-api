@@ -15,60 +15,39 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_terms")
+ * @ORM\Table(name="wp_terms", indexes={@ORM\Index(name="slug", columns={"slug"}), @ORM\Index(name="name", columns={"name"})})
  */
 class Term
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=200, nullable=false)
+     */
+    protected $name = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=200, nullable=false)
+     */
+    protected $slug = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_group", type="bigint", nullable=false)
+     */
+    protected $termGroup = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_id", type="bigint", options={"unsigned"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer", name="term_id")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $termId;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="name")
-     */
-    protected $name;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="slug")
-     */
-    protected $slug;
-
-    /**
-     *
-     * @ORM\Column(type="integer", name="term_group")
-     */
-    protected $termGroup;
-
-
-
-    /**
-     * Set termId
-     *
-     * @param integer $termId
-     *
-     * @return Term
-     */
-    public function setTermId($termId)
-    {
-        $this->termId = $termId;
-
-        return $this;
-    }
-
-    /**
-     * Get termId
-     *
-     * @return integer
-     */
-    public function getTermId()
-    {
-        return $this->termId;
-    }
 
     /**
      * Set name
@@ -140,5 +119,15 @@ class Term
     public function getTermGroup()
     {
         return $this->termGroup;
+    }
+
+    /**
+     * Get termId
+     *
+     * @return integer
+     */
+    public function getTermId()
+    {
+        return $this->termId;
     }
 }

@@ -15,45 +15,39 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_options")
+ * @ORM\Table(name="wp_options", uniqueConstraints={@ORM\UniqueConstraint(name="option_name", columns={"option_name"})})
  */
 class Option
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="option_id")
+     * @var string
+     *
+     * @ORM\Column(name="option_name", type="string", length=191, nullable=false)
      */
-    protected $optionId;
+    protected $optionName = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="option_name")
-     */
-    protected $optionName;
-
-    /**
-     *
-     * @ORM\Column(type="text", name="option_value")
+     * @ORM\Column(name="option_value", type="text", nullable=false)
      */
     protected $optionValue;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="autoload")
+     * @ORM\Column(name="autoload", type="string", length=20, nullable=false)
      */
-    protected $autoload;
-
+    protected $autoload = 'yes';
 
     /**
-     * Get optionId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="option_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getOptionId()
-    {
-        return $this->optionId;
-    }
+    protected $optionId;
 
     /**
      * Set optionName
@@ -125,5 +119,15 @@ class Option
     public function getAutoload()
     {
         return $this->autoload;
+    }
+
+    /**
+     * Get optionId
+     *
+     * @return integer
+     */
+    public function getOptionId()
+    {
+        return $this->optionId;
     }
 }

@@ -15,30 +15,72 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_term_relationships")
+ * @ORM\Table(name="wp_term_relationships", indexes={@ORM\Index(name="term_taxonomy_id", columns={"term_taxonomy_id"})})
  */
 class TermRelationship
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_order", type="integer", nullable=false)
+     */
+    protected $termOrder = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="object_id", type="bigint", options={"unsigned"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="object_id")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $objectId;
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="bigint", name="term_taxonomy_id")
+     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $termTaxonomyId;
 
     /**
+     * Set termOrder
      *
-     * @ORM\Column(type="integer", name="term_order")
+     * @param integer $termOrder
+     *
+     * @return TermRelationship
      */
-    protected $termOrder;
+    public function setTermOrder($termOrder)
+    {
+        $this->termOrder = $termOrder;
 
+        return $this;
+    }
 
+    /**
+     * Get termOrder
+     *
+     * @return integer
+     */
+    public function getTermOrder()
+    {
+        return $this->termOrder;
+    }
+
+    /**
+     * Set objectId
+     *
+     * @param integer $objectId
+     *
+     * @return TermRelationship
+     */
+    public function setObjectId($objectId)
+    {
+        $this->objectId = $objectId;
+
+        return $this;
+    }
 
     /**
      * Get objectId
@@ -72,29 +114,5 @@ class TermRelationship
     public function getTermTaxonomyId()
     {
         return $this->termTaxonomyId;
-    }
-
-    /**
-     * Set termOrder
-     *
-     * @param integer $termOrder
-     *
-     * @return TermRelationship
-     */
-    public function setTermOrder($termOrder)
-    {
-        $this->termOrder = $termOrder;
-
-        return $this;
-    }
-
-    /**
-     * Get termOrder
-     *
-     * @return integer
-     */
-    public function getTermOrder()
-    {
-        return $this->termOrder;
     }
 }

@@ -15,46 +15,39 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_usermeta")
+ * @ORM\Table(name="wp_usermeta", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="meta_key", columns={"meta_key"})})
  */
 class Usermeta
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="umeta_id")
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $umetaId;
+    protected $userId = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="bigint", name="user_id")
-     */
-    protected $userId;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="meta_key")
+     * @ORM\Column(name="meta_key", type="string", length=255, nullable=true)
      */
     protected $metaKey;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="text", name="meta_value")
+     * @ORM\Column(name="meta_value", type="text", nullable=true)
      */
     protected $metaValue;
 
-
-
     /**
-     * Get umetaId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="umeta_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getUmetaId()
-    {
-        return $this->umetaId;
-    }
+    protected $umetaId;
 
     /**
      * Set userId
@@ -126,5 +119,15 @@ class Usermeta
     public function getMetaValue()
     {
         return $this->metaValue;
+    }
+
+    /**
+     * Get umetaId
+     *
+     * @return integer
+     */
+    public function getUmetaId()
+    {
+        return $this->umetaId;
     }
 }

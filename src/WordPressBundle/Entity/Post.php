@@ -15,161 +15,172 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_posts")
+ * @ORM\Table(name="wp_posts", indexes={@ORM\Index(name="post_name", columns={"post_name"}), @ORM\Index(name="type_status_date", columns={"post_type", "post_status", "post_date", "ID"}), @ORM\Index(name="post_parent", columns={"post_parent"}), @ORM\Index(name="post_author", columns={"post_author"})})
  */
 class Post
 {
-    /**
+     /**
+     * @var integer
      *
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="ID")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="post_author", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $id;
+    protected $postAuthor = '0';
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="integer", name="post_author")
+     * @ORM\Column(name="post_date", type="datetime", nullable=false)
      */
-    protected $postAuthor;
+    protected $postDate = '0000-00-00 00:00:00';
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", name="post_date")
+     * @ORM\Column(name="post_date_gmt", type="datetime", nullable=false)
      */
-    protected $postDate;
+    protected $postDateGmt = '0000-00-00 00:00:00';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="datetime", name="post_date_gmt")
-     */
-    protected $postDateGmt;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="post_content")
+     * @ORM\Column(name="post_content", type="text", nullable=false)
      */
     protected $postContent;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_title")
+     * @ORM\Column(name="post_title", type="text", length=65535, nullable=false)
      */
     protected $postTitle;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_excerpt")
+     * @ORM\Column(name="post_excerpt", type="text", length=65535, nullable=false)
      */
     protected $postExcerpt;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_status")
+     * @ORM\Column(name="post_status", type="string", length=20, nullable=false)
      */
-    protected $postStatus;
+    protected $postStatus = 'publish';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="comment_status")
+     * @ORM\Column(name="comment_status", type="string", length=20, nullable=false)
      */
-    protected $commentStatus;
+    protected $commentStatus = 'open';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="ping_status")
+     * @ORM\Column(name="ping_status", type="string", length=20, nullable=false)
      */
-    protected $pingStatus;
+    protected $pingStatus = 'open';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_password")
+     * @ORM\Column(name="post_password", type="string", length=20, nullable=false)
      */
-    protected $postPassword;
+    protected $postPassword = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_name")
+     * @ORM\Column(name="post_name", type="string", length=200, nullable=false)
      */
-    protected $postName;
+    protected $postName = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="to_ping")
+     * @ORM\Column(name="to_ping", type="text", length=65535, nullable=false)
      */
-    protected $toPing; 
+    protected $toPing;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="pinged")
+     * @ORM\Column(name="pinged", type="text", length=65535, nullable=false)
      */
     protected $pinged;
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", name="post_modified")
+     * @ORM\Column(name="post_modified", type="datetime", nullable=false)
      */
-    protected $postModified;
+    protected $postModified = '0000-00-00 00:00:00';
 
     /**
+     * @var \DateTime
      *
-     * @ORM\Column(type="datetime", name="post_modified_gmt")
+     * @ORM\Column(name="post_modified_gmt", type="datetime", nullable=false)
      */
-    protected $postModifiedGmt;
+    protected $postModifiedGmt = '0000-00-00 00:00:00';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_content_filtered")
+     * @ORM\Column(name="post_content_filtered", type="text", nullable=false)
      */
     protected $postContentFiltered;
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="integer", name="post_parent")
+     * @ORM\Column(name="post_parent", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $postParent;
+    protected $postParent = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="guid")
+     * @ORM\Column(name="guid", type="string", length=255, nullable=false)
      */
-    protected $guid;
+    protected $guid = '';
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="integer", name="menu_order")
+     * @ORM\Column(name="menu_order", type="integer", nullable=false)
      */
-    protected $menuOrder;
+    protected $menuOrder = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_type")
+     * @ORM\Column(name="post_type", type="string", length=20, nullable=false)
      */
-    protected $postType;
+    protected $postType = 'post';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="post_mime_type")
+     * @ORM\Column(name="post_mime_type", type="string", length=100, nullable=false)
      */
-    protected $postMimeType;
+    protected $postMimeType = '';
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="integer", name="comment_count")
+     * @ORM\Column(name="comment_count", type="bigint", nullable=false)
      */
-    protected $commentCount;
-
-
+    protected $commentCount = '0';
 
     /**
-     * Get id
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    protected $id;
 
     /**
      * Set postAuthor
@@ -697,5 +708,15 @@ class Post
     public function getCommentCount()
     {
         return $this->commentCount;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
