@@ -1,0 +1,14 @@
+parameters:
+    wordpress.user.class: WordPressBundle\Entity\User
+
+services:
+    wordpress_sha1_encoder:
+        class: WordPressBundle\Encoder\WordPressPasswordEncoder
+        arguments:
+          - "8"
+          - true
+    wordpress_user.user_manager:
+        class: WordPressBundle\Manager\UserManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - %wordpress.user.class%

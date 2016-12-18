@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new WordPressBundle\WordPressBundle(),
+            new OAuthBundle\OAuthBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

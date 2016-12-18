@@ -15,58 +15,53 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_term_taxonomy")
+ * @ORM\Table(name="wp_term_taxonomy", uniqueConstraints={@ORM\UniqueConstraint(name="term_id_taxonomy", columns={"term_id", "taxonomy"})}, indexes={@ORM\Index(name="taxonomy", columns={"taxonomy"})})
  */
 class TermTaxonomy
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="term_taxonomy_id")
+     * @var integer
+     *
+     * @ORM\Column(name="term_id", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $termTaxonomyId;
+    protected $termId = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="bigint", name="term_id")
+     * @ORM\Column(name="taxonomy", type="string", length=32, nullable=false)
      */
-    protected $termId;
+    protected $taxonomy = '';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="string", name="taxonomy")
-     */
-    protected $taxonomy;
-
-    /**
-     *
-     * @ORM\Column(type="text", name="description")
+     * @ORM\Column(name="description", type="text", nullable=false)
      */
     protected $description;
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="bigint", name="parent")
+     * @ORM\Column(name="parent", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $parent;
+    protected $parent = '0';
 
     /**
+     * @var integer
      *
-     * @ORM\Column(type="bigint", name="count")
+     * @ORM\Column(name="count", type="bigint", nullable=false)
      */
-    protected $count;
-
-
+    protected $count = '0';
 
     /**
-     * Get termTaxonomyId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getTermTaxonomyId()
-    {
-        return $this->termTaxonomyId;
-    }
+    protected $termTaxonomyId;
 
     /**
      * Set termId
@@ -186,5 +181,15 @@ class TermTaxonomy
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * Get termTaxonomyId
+     *
+     * @return integer
+     */
+    public function getTermTaxonomyId()
+    {
+        return $this->termTaxonomyId;
     }
 }

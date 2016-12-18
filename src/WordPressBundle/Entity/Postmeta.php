@@ -15,46 +15,39 @@ use Symfony\Component\Validator\Constraints as Assert;
     }
 )
  * @ORM\Entity
- * @ORM\Table(name="wp_postmeta")
+ * @ORM\Table(name="wp_postmeta", indexes={@ORM\Index(name="post_id", columns={"post_id"}), @ORM\Index(name="meta_key", columns={"meta_key"})})
  */
 class Postmeta
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="meta_id")
+     * @var integer
+     *
+     * @ORM\Column(name="post_id", type="bigint", nullable=false, options={"unsigned"=true})
      */
-    protected $metaId;
+    protected $postId = '0';
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="bigint", name="post_id")
-     */
-    protected $postId;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="meta_key")
+     * @ORM\Column(name="meta_key", type="string", length=255, nullable=true)
      */
     protected $metaKey;
 
     /**
+     * @var string
      *
-     * @ORM\Column(type="text", name="meta_value")
+     * @ORM\Column(name="meta_value", type="text", nullable=true)
      */
     protected $metaValue;
 
-
-
     /**
-     * Get metaId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="meta_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getMetaId()
-    {
-        return $this->metaId;
-    }
+    protected $metaId;
 
     /**
      * Set postId
@@ -126,5 +119,15 @@ class Postmeta
     public function getMetaValue()
     {
         return $this->metaValue;
+    }
+
+    /**
+     * Get metaId
+     *
+     * @return integer
+     */
+    public function getMetaId()
+    {
+        return $this->metaId;
     }
 }

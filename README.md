@@ -9,7 +9,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 ## To do
 
 ### General
-- [ ] Add OAuth2
+- [x] Add OAuth2
 - [ ] Add table names as a parameter
 - [ ] Create a website on [GitHub](https://pages.github.com/) for demo
 

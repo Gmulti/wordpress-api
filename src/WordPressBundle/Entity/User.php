@@ -5,6 +5,7 @@ namespace WordPressBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use OAuthBundle\User\OAuth2UserInterface;
 
 /**
  *
@@ -14,69 +15,151 @@ use Symfony\Component\Validator\Constraints as Assert;
         }
     }
 )
- * @ORM\Entity
- * @ORM\Table(name="wp_users")
+ * @ORM\Entity(repositoryClass="WordPressBundle\Repository\UserRepository")
+ * @ORM\Table(name="wp_users", indexes={@ORM\Index(name="user_login_key", columns={"user_login"}), @ORM\Index(name="user_nicename", columns={"user_nicename"}), @ORM\Index(name="user_email", columns={"user_email"})})
  */
-class User
+class User implements OAuth2UserInterface
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="user_login", type="string", length=60, nullable=false)
+     */
+    protected $userLogin = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_pass", type="string", length=255, nullable=false)
+     */
+    protected $userPass = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_nicename", type="string", length=50, nullable=false)
+     */
+    protected $userNicename = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_email", type="string", length=100, nullable=false)
+     */
+    protected $userEmail = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_url", type="string", length=100, nullable=false)
+     */
+    protected $userUrl = '';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="user_registered", type="datetime", nullable=false)
+     */
+    protected $userRegistered = '0000-00-00 00:00:00';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_activation_key", type="string", length=255, nullable=false)
+     */
+    protected $userActivationKey = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_status", type="integer", nullable=false)
+     */
+    protected $userStatus = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="display_name", type="string", length=250, nullable=false)
+     */
+    protected $displayName = '';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="bigint")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="bigint", name="ID")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
-    /**
-     *
-     * @ORM\Column(type="string", name="user_login")
+     /**
+     * @ORM\OneToMany(targetEntity="OAuthBundle\Entity\Client", mappedBy="user")
      */
-    protected $userLogin;
+    protected $clients;
 
     /**
-     *
-     * @ORM\Column(type="string", name="user_nicename")
+     * @ORM\OneToMany(targetEntity="OAuthBundle\Entity\AccessToken", mappedBy="user")
      */
-    protected $userNicename;
+    protected $accessTokens;
 
-    /**
-     *
-     * @ORM\Column(type="string", name="user_email")
-     */
-    protected $userEmail;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="user_url")
-     */
-    protected $userUrl;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="user_registered")
-     */
-    protected $userRegistered;
-
-    /**
-     *
-     * @ORM\Column(type="integer", name="user_status")
-     */
-    protected $userStatus;
-
-    /**
-     *
-     * @ORM\Column(type="string", name="display_name")
-     */
-    protected $displayName;
 
 
     /**
-     * Get id
+     * Get scopes
      *
-     * @return integer
+     * @return array
      */
-    public function getId()
+    public function getScopes()
     {
-        return $this->id;
+        return array();
+    }
+
+    /**
+     * Get scope
+     *
+     * @return string
+     */
+    public function getScope()
+    {
+
+        if(!empty($this->getScopes())){
+            return implode(' ', $this->getScopes());
+        }
+        return array();
+    }
+
+    public function getRoles(){
+        return array();
+    }
+
+    public function getPassword(){
+        return $this->getUserPass();
+    }
+
+    public function getSalt(){
+        return null;
+    }
+
+    public function getUsername(){
+        return $this->userLogin;
+    }
+
+    /**
+     * Erase credentials
+     *
+     * @return void
+     */
+    public function eraseCredentials()
+    {
+        // We don't hold anything sensitivie, do nothing
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->clients = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->accessTokens = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -101,6 +184,30 @@ class User
     public function getUserLogin()
     {
         return $this->userLogin;
+    }
+
+    /**
+     * Set userPass
+     *
+     * @param string $userPass
+     *
+     * @return User
+     */
+    public function setUserPass($userPass)
+    {
+        $this->userPass = $userPass;
+
+        return $this;
+    }
+
+    /**
+     * Get userPass
+     *
+     * @return string
+     */
+    public function getUserPass()
+    {
+        return $this->userPass;
     }
 
     /**
@@ -178,7 +285,7 @@ class User
     /**
      * Set userRegistered
      *
-     * @param string $userRegistered
+     * @param \DateTime $userRegistered
      *
      * @return User
      */
@@ -192,11 +299,35 @@ class User
     /**
      * Get userRegistered
      *
-     * @return string
+     * @return \DateTime
      */
     public function getUserRegistered()
     {
         return $this->userRegistered;
+    }
+
+    /**
+     * Set userActivationKey
+     *
+     * @param string $userActivationKey
+     *
+     * @return User
+     */
+    public function setUserActivationKey($userActivationKey)
+    {
+        $this->userActivationKey = $userActivationKey;
+
+        return $this;
+    }
+
+    /**
+     * Get userActivationKey
+     *
+     * @return string
+     */
+    public function getUserActivationKey()
+    {
+        return $this->userActivationKey;
     }
 
     /**
@@ -245,5 +376,83 @@ class User
     public function getDisplayName()
     {
         return $this->displayName;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add client
+     *
+     * @param \OAuthBundle\Entity\Client $client
+     *
+     * @return User
+     */
+    public function addClient(\OAuthBundle\Entity\Client $client)
+    {
+        $this->clients[] = $client;
+
+        return $this;
+    }
+
+    /**
+     * Remove client
+     *
+     * @param \OAuthBundle\Entity\Client $client
+     */
+    public function removeClient(\OAuthBundle\Entity\Client $client)
+    {
+        $this->clients->removeElement($client);
+    }
+
+    /**
+     * Get clients
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
+    /**
+     * Add accessToken
+     *
+     * @param \OAuthBundle\Entity\AccessToken $accessToken
+     *
+     * @return User
+     */
+    public function addAccessToken(\OAuthBundle\Entity\AccessToken $accessToken)
+    {
+        $this->accessTokens[] = $accessToken;
+
+        return $this;
+    }
+
+    /**
+     * Remove accessToken
+     *
+     * @param \OAuthBundle\Entity\AccessToken $accessToken
+     */
+    public function removeAccessToken(\OAuthBundle\Entity\AccessToken $accessToken)
+    {
+        $this->accessTokens->removeElement($accessToken);
+    }
+
+    /**
+     * Get accessTokens
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccessTokens()
+    {
+        return $this->accessTokens;
     }
 }
