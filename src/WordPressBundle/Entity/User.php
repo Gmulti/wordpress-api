@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         }
     }
 )
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="WordPressBundle\Repository\UserRepository")
  * @ORM\Table(name="wp_users")
  */
 class User
