@@ -5,3 +5,9 @@ api:
 app:
     resource: '@WordPressBundle/Action/'
     type:     'annotation'
+
+
+o_auth:
+    resource: "@OAuthBundle/Controller/"
+    type:     annotation
+    prefix:   /
