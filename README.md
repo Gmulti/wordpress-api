@@ -29,6 +29,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 
 ### Fixtures 
 
+- [x] Access Limit
 - [ ] Post
 - [ ] Postmeta
 - [ ] Option
