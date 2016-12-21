@@ -19,7 +19,7 @@ class LoadClientData extends AbstractFixture implements OrderedFixtureInterface
         $client1->setClientSecret("client_secret_1");
         $client1->setGrantTypes(array("password", "refresh_token"));
         $client1->setAccessLimit($this->getReference("access-1"));
-        $client1->setScopes("user");
+        $client1->setScopes($this->getReference("scope-1")->getScope());
         $client1->setName("Client user");
 
         $client2 = new Client();
@@ -27,7 +27,7 @@ class LoadClientData extends AbstractFixture implements OrderedFixtureInterface
         $client2->setClientSecret("client_secret_2");
         $client2->setGrantTypes(array("client_credentials"));
         $client2->setAccessLimit($this->getReference("access-2"));
-        $client2->setScopes("pro");
+        $client2->setScopes($this->getReference("scope-2")->getScope());
         $client2->setName("Client pro");
 
         $manager->persist($client1);
