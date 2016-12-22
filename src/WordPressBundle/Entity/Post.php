@@ -5,6 +5,7 @@ namespace WordPressBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  *
@@ -102,6 +103,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="post_name", type="string", length=200, nullable=false)
+     * @Gedmo\Slug(fields={"postTitle"})
      */
     protected $postName = '';
 
