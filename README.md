@@ -32,7 +32,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 - [x] Access Limit
 - [x] Client
 - [x] Scope
-- [ ] Post
+- [x] Post
 - [ ] Postmeta
 - [ ] Option
 - [ ] Link
