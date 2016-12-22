@@ -112,14 +112,14 @@ class Post
      *
      * @ORM\Column(name="to_ping", type="text", length=65535, nullable=false)
      */
-    protected $toPing;
+    protected $toPing = '';
 
     /**
      * @var string
      *
      * @ORM\Column(name="pinged", type="text", length=65535, nullable=false)
      */
-    protected $pinged;
+    protected $pinged = '';
 
     /**
      * @var \DateTime
@@ -140,7 +140,7 @@ class Post
      *
      * @ORM\Column(name="post_content_filtered", type="text", nullable=false)
      */
-    protected $postContentFiltered;
+    protected $postContentFiltered = '';
 
     /**
      * @var integer
