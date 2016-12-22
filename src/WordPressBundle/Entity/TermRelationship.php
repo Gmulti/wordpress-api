@@ -19,6 +19,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class TermRelationship
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    protected $termTaxonomyId;
+
     /**
      * @var integer
      *
@@ -34,15 +44,7 @@ class TermRelationship
      * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $objectId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     */
-    protected $termTaxonomyId;
+    
 
     /**
      * Set termOrder

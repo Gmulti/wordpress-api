@@ -19,6 +19,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class TermTaxonomy
 {
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $termTaxonomyId;
+    
     /**
      * @var integer
      *
@@ -53,15 +62,6 @@ class TermTaxonomy
      * @ORM\Column(name="count", type="bigint", nullable=false)
      */
     protected $count = '0';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="term_taxonomy_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $termTaxonomyId;
 
     /**
      * Set termId

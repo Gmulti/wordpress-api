@@ -19,6 +19,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Term
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $termId;
+
     /**
      * @var string
      *
@@ -40,14 +50,6 @@ class Term
      */
     protected $termGroup = '0';
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="term_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $termId;
 
     /**
      * Set name

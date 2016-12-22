@@ -19,6 +19,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    
      /**
      * @var integer
      *
@@ -173,14 +182,6 @@ class Post
      */
     protected $commentCount = '0';
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $id;
 
     /**
      * Set postAuthor

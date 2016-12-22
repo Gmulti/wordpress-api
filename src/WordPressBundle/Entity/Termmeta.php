@@ -19,6 +19,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Termmeta
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="meta_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $metaId;
+    
     /**
      * @var integer
      *
@@ -40,14 +50,7 @@ class Termmeta
      */
     protected $metaValue;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="meta_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $metaId;
+    
 
     /**
      * Set termId

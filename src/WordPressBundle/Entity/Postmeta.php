@@ -22,6 +22,15 @@ class Postmeta
     /**
      * @var integer
      *
+     * @ORM\Column(name="meta_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $metaId;
+    
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="post_id", type="bigint", nullable=false, options={"unsigned"=true})
      */
     protected $postId = '0';
@@ -40,14 +49,6 @@ class Postmeta
      */
     protected $metaValue;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="meta_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $metaId;
 
     /**
      * Set postId

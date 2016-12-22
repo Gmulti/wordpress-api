@@ -20,6 +20,16 @@ use OAuthBundle\User\OAuth2UserInterface;
  */
 class User implements OAuth2UserInterface
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    
     /**
      * @var string
      *
@@ -82,15 +92,6 @@ class User implements OAuth2UserInterface
      * @ORM\Column(name="display_name", type="string", length=250, nullable=false)
      */
     protected $displayName = '';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ID", type="bigint")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $id;
 
      /**
      * @ORM\OneToMany(targetEntity="OAuthBundle\Entity\Client", mappedBy="user")

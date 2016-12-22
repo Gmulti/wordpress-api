@@ -19,6 +19,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Usermeta
 {
+
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="umeta_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $umetaId;
+    
     /**
      * @var integer
      *
@@ -39,15 +49,6 @@ class Usermeta
      * @ORM\Column(name="meta_value", type="text", nullable=true)
      */
     protected $metaValue;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="umeta_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $umetaId;
 
     /**
      * Set userId

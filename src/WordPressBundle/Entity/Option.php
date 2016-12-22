@@ -20,6 +20,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Option
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="option_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $optionId;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="option_name", type="string", length=191, nullable=false)
@@ -40,14 +49,7 @@ class Option
      */
     protected $autoload = 'yes';
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="option_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $optionId;
+    
 
     /**
      * Set optionName

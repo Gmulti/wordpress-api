@@ -20,6 +20,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Link
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="link_id", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $linkId;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="link_url", type="string", length=255, nullable=false)
@@ -103,14 +112,6 @@ class Link
      */
     protected $linkRss = '';
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="link_id", type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $linkId;
 
     /**
      * Set linkUrl
