@@ -40,7 +40,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 - [ ] Term Relationships
 - [ ] Termmeta
 - [ ] Term Taxonomy
-- [ ] User
+- [x] User
 - [ ] Usermeta
 - [ ] Comment
 - [ ] Commentmeta
