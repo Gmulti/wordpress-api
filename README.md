@@ -42,7 +42,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 - [ ] Term Taxonomy
 - [x] User
 - [ ] Usermeta
-- [ ] Comment
+- [x] Comment
 - [ ] Commentmeta
 
 ### Unit tests
