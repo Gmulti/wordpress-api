@@ -71,6 +71,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
+    "config": {
+        "bin-dir": "bin/"
+    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",

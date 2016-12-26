@@ -39,10 +39,10 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function __construct(ManagerRegistry $doctrine)
     {
-        $this->doctrine = $doctrine;
-        $this->manager = $doctrine->getManager();
+        $this->doctrine   = $doctrine;
+        $this->manager    = $doctrine->getManager();
         $this->schemaTool = new SchemaTool($this->manager);
-        $this->classes = $this->manager->getMetadataFactory()->getAllMetadata();
+        $this->classes    = $this->manager->getMetadataFactory()->getAllMetadata();
     }
 
     /**
