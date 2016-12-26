@@ -19,7 +19,7 @@ parameters:
 
 services:
     oauth2.server:
-        class: %oauth2.server.class%
+        class: '%oauth2.server.class%'
         arguments:
             oauth2.server.storage: 
                 - "@oauth2.storage.client_credentials"
@@ -44,83 +44,83 @@ services:
         public: false
 
     oauth2.request:
-        class: %oauth2.request.class%
+        class: '%oauth2.request.class%'
         arguments: 
             - "@request_stack"
 
     oauth2.response:
-        class: %oauth2.response.class%
+        class: '%oauth2.response.class%'
 
     oauth2.user_provider:
-        class: %oauth2.user_provider.class%
+        class: '%oauth2.user_provider.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@security.encoder_factory"
             - "@wordpress_user.user_manager"
 
     oauth2.scope_manager:
-        class: %oauth2.scope_manager.class%
+        class: '%oauth2.scope_manager.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
 
     oauth2.client_manager:
-        class: %oauth2.client_manager.class%
+        class: '%oauth2.client_manager.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@oauth2.scope_manager"
 
     oauth2.storage.client_credentials:
-        class: %oauth2.storage.client_credentials.class%
+        class: '%oauth2.storage.client_credentials.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
 
     oauth2.storage.authorization_code:
-        class: %oauth2.storage.authorization_code.class%
+        class: '%oauth2.storage.authorization_code.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
 
     oauth2.storage.user_credentials:
-        class: %oauth2.storage.user_credentials.class%
+        class: '%oauth2.storage.user_credentials.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@oauth2.user_provider"
             - "@wordpress_sha1_encoder"
 
     oauth2.storage.access_token:
-        class: %oauth2.storage.access_token.class%
+        class: '%oauth2.storage.access_token.class%'
         arguments: 
             - "@doctrine.orm.entity_manager"
 
     oauth2.storage.refresh_token:
-        class: %oauth2.storage.refresh_token.class%
+        class: '%oauth2.storage.refresh_token.class%'
         arguments: 
             - "@doctrine.orm.entity_manager"
 
     oauth2.storage.scope:
-        class: %oauth2.storage.scope.class%
+        class: '%oauth2.storage.scope.class%'
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@oauth2.scope_manager"
 
     oauth2.storage.public_key:
-        class: %oauth2.storage.public_key.class%
+        class: '%oauth2.storage.public_key.class%'
 
     oauth2.grant_type.client_credentials:
-        class: %oauth2.grant_type.client_credentials.class%
+        class: '%oauth2.grant_type.client_credentials.class%'
         arguments:
             - "@oauth2.storage.client_credentials"
 
     oauth2.grant_type.authorization_code:
-        class: %oauth2.grant_type.authorization_code.class%
+        class: '%oauth2.grant_type.authorization_code.class%'
         arguments:
             - "@oauth2.storage.authorization_code"
 
     oauth2.grant_type.user_credentials:
-        class: %oauth2.grant_type.user_credentials.class%
+        class: '%oauth2.grant_type.user_credentials.class%'
         arguments:
             - "@oauth2.storage.user_credentials"
 
     oauth2.grant_type.refresh_token:
-        class: %oauth2.grant_type.refresh_token.class%
+        class: '%oauth2.grant_type.refresh_token.class%'
         arguments:
             - "@oauth2.storage.refresh_token"

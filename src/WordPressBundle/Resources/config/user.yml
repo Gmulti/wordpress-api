@@ -11,4 +11,4 @@ services:
         class: WordPressBundle\Manager\UserManager
         arguments:
             - '@doctrine.orm.entity_manager'
-            - %wordpress.user.class%
+            - '%wordpress.user.class%'
