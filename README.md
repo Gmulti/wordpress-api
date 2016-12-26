@@ -6,6 +6,8 @@ The idea is to plug this project on WordPress data.
 
 This project has as its skeleton: [API Platform](https://api-platform.com/)
 
+Launch PHPUnit tests : **phpunit --configuration phpunit.xml.dist**
+
 ## To do
 
 ### General
@@ -47,6 +49,7 @@ This project has as its skeleton: [API Platform](https://api-platform.com/)
 
 ### Unit tests
 
+- [x] /oauth/token
 - [ ] Post
 - [ ] Postmeta
 - [ ] Option
