@@ -15,7 +15,11 @@ Feature: Connect with oauth
         Then the response status code should be 200
         And the response should be in JSON
         And the header "Content-Type" should be equal to "application/json"
-        And the JSON node "expires_in" should be equal to "86400"
-        And the JSON node "scope" should be equal to "user"
-        And the JSON node "token_type" should be equal to "Bearer"
-       
+        And the JSON nodes string should contain:
+        """
+        {
+            "expires_in": 86400,
+            "token_type":"Bearer",
+            "scope":"user"
+        }
+        """
