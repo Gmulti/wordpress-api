@@ -50,7 +50,7 @@
         "behat/mink": "^1.7",
         "behat/mink-extension": "^2.2",
         "behat/mink-browserkit-driver": "^1.3.1",
-        "behatch/contexts": "^2.5",
+        "behatch/contexts": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "scripts": {
@@ -71,6 +71,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Gmulti/contexts"
+        }
+    ],
     "config": {
         "bin-dir": "bin/"
     },
