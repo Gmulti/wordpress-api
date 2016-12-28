@@ -25,7 +25,7 @@ class OAuthProvider implements AuthenticationProviderInterface
     {
         
 
-        $user = $this->userProvider->loadUserByUsername($token->getUserId()->getEmailAddress());
+        $user = $this->userProvider->loadUserByUsername($token->getUser()->getUserEmail());
 
         if ($user && $this->validateDigest($token->getExpires())) {
             $authenticatedToken = new AccessToken($user->getRoles());
