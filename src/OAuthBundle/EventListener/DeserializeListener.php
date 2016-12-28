@@ -38,7 +38,12 @@ final class DeserializeListener
     private function denormalizeFormRequest(Request $request)
     {
         try {
-            $body = json_decode($request->getContent());
+            $body = $request->getContent();
+            
+            if(is_string($body)){
+                $body = json_decode($body);
+            }
+
 
             foreach ($body as $key => $value) {
                 $request->request->set($key, $value);
