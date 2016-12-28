@@ -8,7 +8,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
 /**
- * @ApiResource
  * @ORM\Entity
  * @ORM\Table
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
@@ -268,5 +267,29 @@ class AccessToken extends AbstractToken
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \WordPressBundle\Entity\User $user
+     *
+     * @return AccessToken
+     */
+    public function setUser($user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WordPressBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

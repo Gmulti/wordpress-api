@@ -34,7 +34,7 @@ class AccessToken implements AccessTokenInterface
         );
     }
 
-    public function setAccessToken($accessToken, $client_id, $userId, $expires, $scope = null)
+    public function setAccessToken($token, $client_id, $userId, $expires, $scope = null)
     {   
         $client = $this->em->getRepository('OAuthBundle:Client')->findOneByClientId($client_id);
 
@@ -43,9 +43,9 @@ class AccessToken implements AccessTokenInterface
         }
 
         $user = $this->em->getRepository('WordPressBundle:User')->findOneById($userId);
-        
+
         $accessToken = new AccessToken();
-        $accessToken->setAccessToken($accessToken);
+        $accessToken->setAccessToken($token);
         $accessToken->setClient($client);
         $accessToken->setUser($user);
         $accessToken->setExpires($expires);
