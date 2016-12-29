@@ -40,10 +40,13 @@ final class DeserializeListener
         try {
             $body = $request->getContent();
             
+            if($body == null) {
+                return; 
+            }
+
             if(is_string($body)){
                 $body = json_decode($body);
             }
-
 
             foreach ($body as $key => $value) {
                 $request->request->set($key, $value);
