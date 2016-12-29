@@ -1,6 +1,6 @@
 Feature: Post WordPress
     @Login
-    Scenario: Get a post
+    Scenario: Get posts
         When I add "Accept" header equal to "application/json" 
         And I send a "GET" request to "/posts" 
 
