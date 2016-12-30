@@ -1,7 +1,7 @@
 services:
     post.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: [ { id: 'exact' , postType: 'exact' } ]
+        arguments: [ { id: 'exact' , postType: 'exact', postName: 'partial', postStatus: 'exact', postAuthor: 'exact' } ]
         tags:      [ { name: 'api_platform.filter', id: 'post.search' } ]
 
     postmeta.search_filter:
