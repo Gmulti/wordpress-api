@@ -1,4 +1,5 @@
 Feature: Option WordPress
+    @WithoutToken
     Scenario: Get options without Login
     When I add "Accept" header equal to "application/json" 
     And I send a "GET" request to "/options" 

@@ -92,4 +92,12 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $event->getEnvironment()->getContext("Sanpi\Behatch\Context\RestContext")->iAddHeaderEqualTo("Authorization", "Bearer " . $data->access_token);
 
     }
+
+    /**
+     * @BeforeScenario @WithoutToken
+     */
+    public function withoutToken($event) 
+    {
+        $event->getEnvironment()->getContext("Sanpi\Behatch\Context\RestContext")->iAddHeaderEqualTo("Authorization", "");
+    }
 }
