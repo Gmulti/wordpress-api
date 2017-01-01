@@ -23,56 +23,48 @@ Feature: Option WordPress
         And the response should be in JSON
 
         And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-        And the JSON should be equal to:
+        And the JSON nodes string should contain:
         """
         [
           {
             "optionName": "siteurl",
             "optionValue": "http://wordpress.local/",
-            "autoload": "yes",
-            "optionId": "17"
+            "autoload": "yes"
           },
           {
             "optionName": "home",
             "optionValue": "http://wordpress.local/",
-            "autoload": "yes",
-            "optionId": "18"
+            "autoload": "yes"
           },
           {
             "optionName": "blogname",
             "optionValue": "WordPress API Project",
-            "autoload": "yes",
-            "optionId": "19"
+            "autoload": "yes"
           },
           {
             "optionName": "blogdescription",
             "optionValue": "Don't panic !",
-            "autoload": "yes",
-            "optionId": "20"
+            "autoload": "yes"
           },
           {
             "optionName": "users_can_register",
             "optionValue": "0",
-            "autoload": "yes",
-            "optionId": "21"
+            "autoload": "yes"
           },
           {
             "optionName": "admin_email",
             "optionValue": "email@mail.com",
-            "autoload": "yes",
-            "optionId": "22"
+            "autoload": "yes"
           },
           {
             "optionName": "start_of_week",
             "optionValue": "1",
-            "autoload": "yes",
-            "optionId": "23"
+            "autoload": "yes"
           },
           {
             "optionName": "date_format",
             "optionValue": "j F Y",
-            "autoload": "yes",
-            "optionId": "24"
+            "autoload": "yes"
           }
         ]
         """

@@ -23,7 +23,7 @@ Feature: Comment WordPress
         And the response should be in JSON
 
         And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-        And the JSON should be equal to:
+        And the JSON nodes string should contain:
         """
         [
           {
@@ -40,8 +40,7 @@ Feature: Comment WordPress
             "commentAgent": "",
             "commentType": "",
             "commentParent": "0",
-            "userId": "0",
-            "commentId": "1"
+            "userId": "0"
           }
         ]
         """

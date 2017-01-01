@@ -8,7 +8,7 @@ Feature: Post WordPress
         And the response should be in JSON
 
         And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-        And the JSON should be equal to:
+        And the JSON nodes string should contain:
         """
         [
           {
@@ -33,8 +33,7 @@ Feature: Post WordPress
             "menuOrder": 0,
             "postType": "post",
             "postMimeType": "",
-            "commentCount": "0",
-            "id": "5"
+            "commentCount": "0"
           }
         ]
         """
