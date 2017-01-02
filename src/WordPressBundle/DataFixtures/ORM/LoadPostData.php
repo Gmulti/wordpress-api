@@ -24,6 +24,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
         $post1->setPostModified(new \DateTime("now"));
         $post1->setPostModifiedGmt(new \DateTime("now"));
 
+        $this->addReference('post-1', $post1);
     
         $manager->persist($post1);
         $manager->flush();
