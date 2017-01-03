@@ -7,6 +7,7 @@ The idea is to plug this project on WordPress data.
 This project has as its skeleton: [API Platform](https://api-platform.com/)
 
 Launch PHPUnit tests : **phpunit --configuration phpunit.xml.dist**
+
 Launch Behat tests : **bin/behat**
 
 ## To do
@@ -36,10 +37,10 @@ Launch Behat tests : **bin/behat**
 - [x] Client
 - [x] Scope
 - [x] Post
-- [ ] Postmeta
+- [x] Postmeta
 - [x] Option
 - [ ] Link
-- [ ] Term
+- [x] Term
 - [ ] Term Relationships
 - [ ] Termmeta
 - [ ] Term Taxonomy
@@ -52,14 +53,14 @@ Launch Behat tests : **bin/behat**
 
 - [x] OAuth Token
 - [x] Post
-- [ ] Postmeta
+- [x] Postmeta
 - [x] Option
 - [ ] Link
-- [ ] Term
+- [x] Term
 - [ ] Term Relationships
 - [ ] Termmeta
 - [ ] Term Taxonomy
 - [ ] User
 - [ ] Usermeta
-- [ ] Comment
+- [x] Comment
 - [ ] Commentmeta
