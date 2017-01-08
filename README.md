@@ -47,7 +47,7 @@ Launch Behat tests : **bin/behat**
 - [x] User
 - [ ] Usermeta
 - [x] Comment
-- [ ] Commentmeta
+- [x] Commentmeta
 
 ### Unit tests
 
@@ -60,7 +60,7 @@ Launch Behat tests : **bin/behat**
 - [ ] Term Relationships
 - [ ] Termmeta
 - [ ] Term Taxonomy
-- [ ] User
+- [x] User
 - [ ] Usermeta
 - [x] Comment
-- [ ] Commentmeta
+- [x] Commentmeta
