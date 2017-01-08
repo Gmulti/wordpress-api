@@ -15,7 +15,7 @@ class LoadCommentData extends AbstractFixture implements OrderedFixtureInterface
     {
         
         $comment1 = new Comment();
-        $comment1->setCommentPostId(1);
+        $comment1->setCommentPostId($this->getReference("post-1")->getId());
         $comment1->setCommentAuthor("Doctor strange");
         $comment1->setCommentAuthorEmail("doctor@strange.com");
         $comment1->setCommentAuthorUrl("http://doctorstrange.com");
