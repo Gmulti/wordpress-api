@@ -22,7 +22,9 @@ class LoadCommentData extends AbstractFixture implements OrderedFixtureInterface
         $comment1->setCommentDate(new \DateTime("now"));
         $comment1->setCommentDateGmt(new \DateTime("now"));
         $comment1->setCommentContent("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex cupiditate, quo possimus. Asperiores hic temporibus dolores voluptates vel vero, cumque expedita ipsam aut veritatis perspiciatis dicta, iste minus, optio facilis?");
-    
+        
+        $this->addReference('comment-1', $comment1);
+
         $manager->persist($comment1);
         $manager->flush();
 
