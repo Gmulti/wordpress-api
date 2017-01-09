@@ -16,5 +16,4 @@
 /web/bundles/
 /bin
 !/bin/console
-!/bin/doctrine.php
 !/bin/symfony_requirements
