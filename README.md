@@ -1,12 +1,12 @@
 WordPress API
 =============
 
+[WebSite](https://gmulti.github.io/wordpress-api/) - in work
+
 Open source project to have a more powerful and secure API than the basic API in WordPress.
 The idea is to plug this project on WordPress data.
 
 This project has as its skeleton: [API Platform](https://api-platform.com/)
-
-Launch PHPUnit tests : **phpunit --configuration phpunit.xml.dist**
 
 Launch Behat tests : **bin/behat**
 
