@@ -22,7 +22,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user1->setUserRegistered(new \DateTime("now"));
         $user1->setUserStatus(0);
         $user1->setDisplayName("Admin");
-    
+        
+        $this->addReference("user-1", $user1);
+
         $manager->persist($user1);
         $manager->flush();
 
