@@ -56,6 +56,47 @@
                 <h1>WordPress API build with Symfony 3</h1>
                 <p>Open source project to have a more powerful and secure API than the basic API in WordPress. The idea is to plug this project on WordPress data.</p>
                 <p>This project has as its skeleton: API Platform</p>
+                <h2>
+                    Requirements
+                </h2>
+                <ul>
+                    <li>PHP 7</li>
+                </ul>
+                <h2>How use ?</h2>
+                <ul>
+                    <li>
+                         <code>composer install</code>
+                    </li>
+                    <li>
+                        Launch server with : <code>php bin/console server:run</code>
+                    </li>
+                </ul>
+                <h2>
+                    Configures your database
+                </h2>
+                <ul>
+                    <li>
+                        Modify all prefix table entities in <code>src/WordPressBundle/Entity</code>
+                        <p>Example : <code>@ORM\Table(name="wp_commentmeta"</code> by <code>@ORM\Table(name="MYPREFIX_commentmeta"</code></p>
+                    </li>
+                    <li>
+                        Build database : <code>php bin/console doctrine:schema:update --force</code>
+                    </li>
+                </ul>
+                <h2>
+                    Running tests
+                </h2>
+                <p class="alert alert-danger">
+                    Running tests on an other database !
+                </p>
+                <ul>
+                    <li>
+                        Build fixtures : php bin/console doctrine:fixtures:load
+                    </li>
+                    <li>
+                        Execute <code>bin/behat</code>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
