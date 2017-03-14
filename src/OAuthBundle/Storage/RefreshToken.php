@@ -5,15 +5,15 @@ namespace OAuthBundle\Storage;
 use OAuth2\Storage\RefreshTokenInterface;
 use Doctrine\ORM\EntityManager;
 
-use OAuthBundle\Entity\RefreshToken;
+use OAuthBundle\Entity\RefreshToken as RefreshTokenEntity;
 
 class RefreshToken implements RefreshTokenInterface
 {
     private $em;
 
-    public function __construct(EntityManager $EntityManager)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->em = $EntityManager;
+        $this->em = $entityManager;
     }
 
     public function getRefreshToken($refresh_token)
@@ -45,7 +45,7 @@ class RefreshToken implements RefreshTokenInterface
         }
 
         // Create Refresh Token
-        $refreshToken = new RefreshToken();
+        $refreshToken = new RefreshTokenEntity();
         $refreshToken->setToken($refresh_token);
         $refreshToken->setClient($client);
         $refreshToken->setUserId($user_id);

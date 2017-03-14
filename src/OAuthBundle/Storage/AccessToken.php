@@ -5,7 +5,7 @@ namespace OAuthBundle\Storage;
 use OAuth2\Storage\AccessTokenInterface;
 use Doctrine\ORM\EntityManager;
 use OAuthBundle\Entity\Client;
-use OAuthBundle\Entity\AccessToken;
+use OAuthBundle\Entity\AccessToken as AccessTokenEntity;
 
 class AccessToken implements AccessTokenInterface
 {
@@ -44,7 +44,7 @@ class AccessToken implements AccessTokenInterface
 
         $user = $this->em->getRepository('WordPressBundle:User')->findOneById($userId);
 
-        $accessToken = new AccessToken();
+        $accessToken = new AccessTokenEntity();
         $accessToken->setAccessToken($token);
         $accessToken->setClient($client);
         $accessToken->setUser($user);

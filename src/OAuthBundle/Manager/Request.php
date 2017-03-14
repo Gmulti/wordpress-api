@@ -3,9 +3,9 @@
 namespace OAuthBundle\Manager;
 
 use Symfony\Component\HttpFoundation\RequestStack;
-use OAuth2\HttpFoundationBridge\Request;
+use OAuth2\HttpFoundationBridge\Request as RequestOAuth;
 
-class Request extends Request
+class Request extends RequestOAuth
 {
 
     public function __construct(RequestStack $requestStack){
